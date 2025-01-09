@@ -1,8 +1,13 @@
 body{
   height: 100vh;
+  margin: 0px;
+  padding: 0px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #0E0E0E;
   overflow: hidden;
 }
 .background{
+  display: flex;
 }

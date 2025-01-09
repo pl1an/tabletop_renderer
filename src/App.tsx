@@ -1,8 +1,11 @@
 import './App.css'
+import { Menu } from './screens/menu/menu'
 
 function App() {
   return (
-    <div></div>
+    <div>
+      <Menu></Menu>
+    </div>
   )
 }
 
