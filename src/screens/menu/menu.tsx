@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import "./menu.css"
 import { SingleLevelDropdownMenu } from '../../components/dropdown/dropdown';
+import { Link } from 'react-router-dom';
 
 export const Menu = ()=>{
   const [selected_width, setWidht] = useState(0);
@@ -39,7 +40,9 @@ export const Menu = ()=>{
         <a style={{marginRight:10, color:'white'}}>player number: </a>
         <SingleLevelDropdownMenu buttonLabel='players' items={playerlist}></SingleLevelDropdownMenu>
       </div>
-      <button className='startbutton'>start</button>
+      <Link to={"/board"}>
+        <button className='startbutton'>start</button>
+      </Link>
     </div>
   )
 }
