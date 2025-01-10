@@ -1,14 +1,17 @@
-body{
-    align-items: flex-start;
-    justify-content: center;
-    height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    background-color: #0E0E0E;
-    overflow: hidden;
+*{
+    margin: 0;
+    padding: 0;
 }
 
+
+.menubody{
+    height: 100vh;
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
 .dimensioninput{
     display: flex;
     flex-direction: row;

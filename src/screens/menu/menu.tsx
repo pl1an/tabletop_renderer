@@ -29,18 +29,20 @@ export const Menu = ()=>{
   }
 
   return (
-    <div style={{marginTop:100}}>
-      <div className='dimensioninput'>
-        <a style={{marginRight:10, color:'white'}}>board dimensions: </a>
-        <SingleLevelDropdownMenu buttonLabel='widht' items={xlist}></SingleLevelDropdownMenu>
-        <a style={{color:"white"}}>X</a>
-        <SingleLevelDropdownMenu buttonLabel='height' items={ylist}></SingleLevelDropdownMenu>
+    <div className='menubody'>
+      <div style={{marginTop:100}}>
+        <div className='dimensioninput'>
+          <a style={{marginRight:10, color:'white'}}>board dimensions: </a>
+          <SingleLevelDropdownMenu buttonLabel='widht' items={xlist}></SingleLevelDropdownMenu>
+          <a style={{color:"white"}}>X</a>
+          <SingleLevelDropdownMenu buttonLabel='height' items={ylist}></SingleLevelDropdownMenu>
+        </div>
+        <div className='dimensioninput'>
+          <a style={{marginRight:10, color:'white'}}>player number: </a>
+          <SingleLevelDropdownMenu buttonLabel='players' items={playerlist}></SingleLevelDropdownMenu>
+        </div>
       </div>
-      <div className='dimensioninput'>
-        <a style={{marginRight:10, color:'white'}}>player number: </a>
-        <SingleLevelDropdownMenu buttonLabel='players' items={playerlist}></SingleLevelDropdownMenu>
-      </div>
-      <Link to={"/board"}>
+      <Link to={"/board"} state={{widht:selected_width, height:selected_height, players:selected_players}}>
         <button className='startbutton'>start</button>
       </Link>
     </div>
