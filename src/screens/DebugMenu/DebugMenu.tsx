@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import "./menu.css"
+import "./DebugMenu.css"
 import { SingleLevelDropdownMenu } from '../../components/dropdown/dropdown';
 import { Link } from 'react-router-dom';
 
-export const Menu = ()=>{
+export const DebugMenu = ()=>{
   const [selected_width, setWidht] = useState(0);
   const [selected_height, setHeight] = useState(0);
   const [selected_players, setPlayerNumber] = useState(2);

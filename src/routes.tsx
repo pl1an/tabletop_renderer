@@ -1,11 +1,11 @@
-import {Menu} from "./screens/menu/menu";
+import {DebugMenu} from "./screens/DebugMenu/DebugMenu";
 import {Board} from "./screens/board/board";
 
 export const Routes = ()=>{
     return([
         {
             path:'/',
-            element: <Menu></Menu>
+            element: <DebugMenu></DebugMenu>
         },
         {
             path:"board",
