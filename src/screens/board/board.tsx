@@ -22,6 +22,7 @@ export const Board = ()=>{
 
     const [playerTurn, setPlayerTurn] = useState(1);
     const [clickedCells, setClickedCells] = useState<string[][]>([]);
+    const [reset, setReset] = useState(false);
     const [gameEnded, setGameEnded] = useState<gameEndedType>({
         winnerplayer:"none",
         wintype:"none",
@@ -55,6 +56,7 @@ export const Board = ()=>{
         } 
     }
     const handleClickedCell = (position:{x:number, y:number}) => {
+        setReset(false);
         //updating board cells
         let updatedClickArray:string[][] = [...clickedCells];
         updatedClickArray[position.x][position.y] = "player"+playerTurn.toString();
@@ -66,8 +68,12 @@ export const Board = ()=>{
     }
 
     useEffect(()=>{
+        setGameEnded({
+            winnerplayer:"none",
+            wintype:"none"
+        })
         generateClickArray();
-    }, [widht, length])
+    }, [reset, widht, length])
 
     return(
         <div className="boardbody">
@@ -88,8 +94,12 @@ export const Board = ()=>{
                     </ul>
                 ))}
             </ul>
-            <WinOverlay winnerplayer={gameEnded.winnerplayer} wintype={gameEnded.wintype} 
-            className={gameEnded.wintype==="none"?"hidden":"show"}></WinOverlay>
+            <WinOverlay 
+                winnerplayer={gameEnded.winnerplayer} 
+                wintype={gameEnded.wintype} 
+                reset={setReset}
+                className={gameEnded.wintype==="none"?"hidden":"show"}
+            />
         </div>
     )
 }

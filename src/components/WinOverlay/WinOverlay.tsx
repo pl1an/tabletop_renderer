@@ -4,13 +4,14 @@ import "./WinOverlay.css";
 interface WinOverlayProps{
     winnerplayer:string;
     wintype:string;
+    reset: (arg0:boolean)=>void;
     className?:string;
 }
 
-export const WinOverlay = ({winnerplayer, wintype, className}:WinOverlayProps) => {
+export const WinOverlay = ({winnerplayer, wintype, reset, className}:WinOverlayProps) => {
     //handles a request to play the game again
     const handleRetryRequest = () => {
-        window.location.reload();
+        reset(true);
     }
 
     return (
