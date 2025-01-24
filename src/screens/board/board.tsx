@@ -21,7 +21,7 @@ export const Board = ()=>{
     const {height, widht, gameName}:boardProps = location.state || 0;
 
     const [playerTurn, setPlayerTurn] = useState(1);
-    const [clickedCells, setClickedCells] = useState<boolean[][]>([]);
+    const [clickedCells, setClickedCells] = useState<string[][]>([]);
     const [gameEnded, setGameEnded] = useState<gameEndedType>({
         winnerplayer:"none",
         wintype:"none",
@@ -29,11 +29,11 @@ export const Board = ()=>{
 
     //generating a array to register the clicked cells
     const generateClickArray = () => {
-        let newArray:boolean[][] = [];
+        let newArray:string[][] = [];
         for(let x=0; x<widht; x++){
             newArray.push([]);
             for(let y=0; y<height; y++){
-                newArray[x].push(false);
+                newArray[x].push("");
             }
         }
         setClickedCells(newArray);
@@ -44,7 +44,7 @@ export const Board = ()=>{
         let boardfilled = true;
         clickedCells.forEach(column => {
             column.forEach(cellclicked => {
-                if(cellclicked===false){
+                if(cellclicked==""){
                     boardfilled = false;
                 }
             })
@@ -56,8 +56,8 @@ export const Board = ()=>{
     }
     const handleClickedCell = (position:{x:number, y:number}) => {
         //updating board cells
-        let updatedClickArray:boolean[][] = [...clickedCells];
-        updatedClickArray[position.x][position.y] = true;
+        let updatedClickArray:string[][] = [...clickedCells];
+        updatedClickArray[position.x][position.y] = "player"+playerTurn.toString();
         setClickedCells(updatedClickArray);
         //checking if the game ended
         checkForEndgame();
@@ -74,11 +74,15 @@ export const Board = ()=>{
             <h1 className="gametitle">{gameName}</h1>
             <h3>turno do jogador {playerTurn}</h3>
             <ul className="board"> 
-                {[...Array(widht).keys()].map((item, index1) => (
+                {clickedCells.map((item, index1) => (
                     <ul>
-                        {[...Array(height).keys()].map((item, index2)=>(
+                        {item.map((item, index2)=>(
                             <li>    
-                                <BoardCell position={{x:index1, y:index2}} playerTurn={playerTurn} handleClickedCell={handleClickedCell}></BoardCell>
+                                <BoardCell 
+                                    position={{x:index1, y:index2}} 
+                                    clickedBy={clickedCells[index1][index2]} 
+                                    handleClickedCell={handleClickedCell}
+                                />
                             </li>
                         ))}
                     </ul>
