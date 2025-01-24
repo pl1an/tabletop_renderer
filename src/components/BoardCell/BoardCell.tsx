@@ -6,10 +6,14 @@ interface BoardCellProps {
     handleClickedCell: (position:BoardCellProps["position"])=>void;
 }
 export const BoardCell = ({position, clickedBy,  handleClickedCell}:BoardCellProps) => {
+    const handleClick = () => {
+        if(clickedBy) return;
+        handleClickedCell(position);
+    }
 
     return(
         <div>
-            <div className={"cell" + (clickedBy? (" flip "+clickedBy) : "")} onClick={()=>handleClickedCell(position)}></div>
+            <div className={"cell" + (clickedBy? (" flip "+clickedBy) : "")} onClick={()=>handleClick()}></div>
         </div>
     )
 }
