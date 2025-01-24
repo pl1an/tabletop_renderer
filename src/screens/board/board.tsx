@@ -56,7 +56,6 @@ export const Board = ()=>{
         } 
     }
     const handleClickedCell = (position:{x:number, y:number}) => {
-        setReset(false);
         //updating board cells
         let updatedClickArray:string[][] = [...clickedCells];
         updatedClickArray[position.x][position.y] = "player"+playerTurn.toString();
@@ -68,6 +67,8 @@ export const Board = ()=>{
     }
 
     useEffect(()=>{
+        setReset(false);
+        setPlayerTurn(1);
         setGameEnded({
             winnerplayer:"none",
             wintype:"none"
