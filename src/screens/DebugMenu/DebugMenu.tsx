@@ -42,7 +42,7 @@ export const DebugMenu = ()=>{
           <SingleLevelDropdownMenu buttonLabel='players' items={playerlist}></SingleLevelDropdownMenu>
         </div>
       </div>
-      <Link to={"/board"} state={{widht:selected_width, height:selected_height, players:selected_players}}>
+      <Link to={"/board"} state={{widht:selected_width, height:selected_height}}>
         <button className='startbutton'>start</button>
       </Link>
     </div>

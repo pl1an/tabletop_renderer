@@ -8,6 +8,7 @@ interface WinOverlayProps{
 }
 
 export const WinOverlay = ({winnerplayer, wintype, className}:WinOverlayProps) => {
+    //handles a request to play the game again
     const handleRetryRequest = () => {
         window.location.reload();
     }

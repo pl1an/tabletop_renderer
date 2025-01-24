@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./board.css";
+import "./Board.css";
 import { useLocation } from "react-router-dom";
 import { BoardCell } from "../../components/BoardCell/BoardCell";
 import { WinOverlay } from "../../components/WinOverlay/WinOverlay";
@@ -8,6 +8,7 @@ import { WinOverlay } from "../../components/WinOverlay/WinOverlay";
 interface boardProps{
     height:number,
     widht:number,
+    gameName:string
 }
 interface gameEndedType{
         wintype:string;
@@ -17,8 +18,7 @@ interface gameEndedType{
 
 export const Board = ()=>{
     const location = useLocation();
-    const {height, widht}:boardProps = location.state || 0;
-    const gameName = "Jogo da Velha";
+    const {height, widht, gameName}:boardProps = location.state || 0;
 
     const [playerTurn, setPlayerTurn] = useState(1);
     const [clickedCells, setClickedCells] = useState<boolean[][]>([]);

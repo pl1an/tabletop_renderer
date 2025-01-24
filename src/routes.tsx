@@ -1,11 +1,16 @@
 import {DebugMenu} from "./screens/DebugMenu/DebugMenu";
-import {Board} from "./screens/board/board";
+import {Board} from "./screens/Board/Board";
+import { Menu } from "./screens/Menu/Menu";
 
 export const Routes = ()=>{
     return([
         {
-            path:'/',
+            path:'/debugmenu',
             element: <DebugMenu></DebugMenu>
+        },
+        {
+            path:'/',
+            element: <Menu></Menu>
         },
         {
             path:"board",
