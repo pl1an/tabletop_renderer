@@ -21,7 +21,7 @@ export const WinOverlay = ({winnerplayer, wintype, reset, className}:WinOverlayP
             </button>
             <Link to={"/"}>
                 <button className="menubutton">
-                    <h1 className="menutext">{"< Ir para o menu"}</h1>
+                    <h1 className="menutext">{"< Selecionar jogadores"}</h1>
                 </button>
             </Link>
             <h2>{wintype==="tie"? "Empate!" : ("Parabéns! Jogador " + winnerplayer + " venceu!")}</h2>

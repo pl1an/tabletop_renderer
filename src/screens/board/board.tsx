@@ -10,6 +10,7 @@ interface boardProps{
     widht:number,
     gameName:string
     dificulty:number
+    playernames:string[];
 }
 interface gameEndedType{
         wintype:string;
@@ -19,7 +20,7 @@ interface gameEndedType{
 
 export const Board = ()=>{
     const location = useLocation();
-    const {height, widht, gameName, dificulty}:boardProps = location.state || 0;
+    const {height, widht, gameName, dificulty, playernames}:boardProps = location.state || 0;
 
     const [playerTurn, setPlayerTurn] = useState(1);
     const [clickedCells, setClickedCells] = useState<string[][]>([]);
@@ -80,7 +81,7 @@ export const Board = ()=>{
     return(
         <div className="boardbody">
             <h1 className="gametitle">{gameName}</h1>
-            <h3>turno do jogador {playerTurn}</h3>
+            <h3>turno de {playernames[playerTurn-1]}</h3>
             <ul className="board"> 
                 {clickedCells.map((item, index1) => (
                     <ul>

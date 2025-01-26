@@ -5,17 +5,26 @@ import connectfourImage from "../../assets/connectfour.jpg"
 import reversiImage from "../../assets/reversi.jpg"
 import lastGameImage from "../../assets/whoknows.jpg";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Selector } from "../../components/Selector/Selector";
+import { playerType } from "../PlayerSelection/PlayerSelection";
+
+
+interface MenuProps{
+    player1:playerType;
+    player2:playerType;
+}
+
 
 export const Menu = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const {player1, player2}:MenuProps = location.state;
 
     const dificultieSettings = [
-        {name:"pvp", value:0, index:0},
-        {name:"fácil", value:1, index:1},
-        {name:"médio", value:2, index:2},
-        {name:"difícil", value:3, index:3}
+        {name:"fácil", value:1, index:0},
+        {name:"médio", value:2, index:1},
+        {name:"difícil", value:3, index:2}
     ]
     const boardsizeSettings = [
         {name:"3", value:3, index:0},
@@ -57,7 +66,13 @@ export const Menu = () => {
     const bannerAction = (id:number, gameName:string) => {
         if(highlitedItems[id]){
             console.log(selectedDificulty, selectedHeight, selectedWidht);
-            navigate("/board", {state:{height:selectedHeight, widht:selectedWidht, dificulty:selectedDificulty, gameName:gameName}});
+            navigate("/board", {state:{
+                height:selectedHeight, 
+                widht:selectedWidht, 
+                dificulty:selectedDificulty, 
+                gameName:gameName, 
+                playernames:[player1.playerNick, player2.playerNick]
+            }});
         }
         else{
             console.log("highlighted", id);
@@ -118,12 +133,20 @@ export const Menu = () => {
             {highlitActive && (
                 <div style={{marginTop:"22px", marginLeft:"-400px"}}>
                     <div>
+                        <a className="selectortitle">Jogadores:</a>
+                        <div style={{marginTop:"-10px",display:"flex", flexDirection:"row", alignItems:"center"}}>
+                            <a className="menuplayername">{player1.playerNick}</a>
+                            <a style={{marginRight:"5px", marginLeft:"5px"}}> vs </a>
+                            <a className="menuplayername">{player2.playerNick}</a>
+                        </div>
+                    </div>
+                    {player2.playerNick==="AI" && (<div>
                         <a className="selectortitle">Selecione a dificuldade:</a>
                         <Selector items={dificultieSettings} setAction={setSelectedDificulty}/>
-                    </div>
+                    </div>)}
                     <div>
                         <a className="selectortitle">Selecione o tamanho do tabuleiro:</a>
-                        <div style={{display:"flex", flexDirection:"row"}}>
+                        <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
                             <Selector items={boardsizeSettings} setAction={setSelectedWidht}/>
                             <a style={{marginRight:"5px", marginLeft:"5px"}}> por </a>
                             <Selector items={boardsizeSettings} setAction={setSelectedHeight}/>

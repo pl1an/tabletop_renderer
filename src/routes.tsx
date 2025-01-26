@@ -1,6 +1,7 @@
 import {DebugMenu} from "./screens/DebugMenu/DebugMenu";
 import {Board} from "./screens/Board/Board";
 import { Menu } from "./screens/Menu/Menu";
+import { PlayerSelection } from "./screens/PlayerSelection/PlayerSelection";
 
 export const Routes = ()=>{
     return([
@@ -10,10 +11,14 @@ export const Routes = ()=>{
         },
         {
             path:'/',
-            element: <Menu></Menu>
+            element:<PlayerSelection></PlayerSelection>
         },
         {
-            path:"board",
+            path:"/games",
+            element:<Menu></Menu>
+        },
+        {
+            path:"/board",
             element: <Board></Board>
         }
     ])
