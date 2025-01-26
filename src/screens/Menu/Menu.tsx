@@ -54,10 +54,10 @@ export const Menu = () => {
         setHighlightActive(false);
     }
     
-    const bannerAction = (id:number) => {
+    const bannerAction = (id:number, gameName:string) => {
         if(highlitedItems[id]){
             console.log(selectedDificulty, selectedHeight, selectedWidht);
-            navigate("/board", {state:{height:selectedHeight, widht:selectedWidht, dificulty:selectedDificulty}});
+            navigate("/board", {state:{height:selectedHeight, widht:selectedWidht, dificulty:selectedDificulty, gameName:gameName}});
         }
         else{
             console.log("highlighted", id);

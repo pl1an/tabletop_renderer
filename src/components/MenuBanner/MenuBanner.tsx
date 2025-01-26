@@ -5,7 +5,7 @@ interface MenuBannerProps{
     gameDescription:string;
     gameImage:string;
     id:number
-    action:(id:number)=>void;
+    action:(id:number, gameName:string)=>void;
     className?:string;
 }
 
@@ -18,7 +18,7 @@ export const MenuBanner = ({gameName, gameDescription, gameImage, id, action, cl
                 <img className="gameimage" src={gameImage}></img>
                 <a className="gamedescription">{gameDescription}</a>
             </div>
-            <button className="playbutton" onClick={()=>action(id)}>
+            <button className="playbutton" onClick={()=>action(id, gameName)}>
                 <h2 className="buttontext">{"JOGAR"}</h2>
             </button>
         </div>
