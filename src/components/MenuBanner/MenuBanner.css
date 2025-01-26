@@ -5,6 +5,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: 0.3s;
+}
+
+.highlighted{
+    position: absolute;
+    z-index: 10;
+}
+.hide{
+    opacity: 0;
 }
 
 .banner{
