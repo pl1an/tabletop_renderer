@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Board.css";
+import "./board.css";
 import { useLocation } from "react-router-dom";
 import { BoardCell } from "../../components/BoardCell/BoardCell";
 import { WinOverlay } from "../../components/WinOverlay/WinOverlay";
